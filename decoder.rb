@@ -12,4 +12,13 @@ def decode_char(morse_char)
   MORSE_ALPHABET[morse_char]
 end
 
-p decode_char('.-')
+def decode_word(morse_word)
+  morse_word.split.map { |char| decode_char(char) }.join
+end
+
+def decode(morse)
+  words = morse.split('   ').map { |word| decode_word(word) }
+  words.join(' ')
+end
+
+p decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
